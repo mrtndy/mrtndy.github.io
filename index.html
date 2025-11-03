@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use VT323 font for retro feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'VT323', monospace;
+            background-color: #000000;
+            color: #e5e7eb; /* Light gray text */
+            text-shadow: 0 0 3px rgba(52, 211, 153, 0.4); /* Subtle green glow */
+        }
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6); /* Dark translucent background */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(55, 65, 81, 0.5); /* Dark gray border */
+        }
+        /* Custom scrollbar for dark theme */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #111;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* This class will be used by JS to hide/show pages */
+        .page-section {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Container -->
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Header / Profile Section (Visible on all pages) -->
+        <header class="flex flex-col sm:flex-row items-center sm:justify-between mb-12">
+            <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                <img 
+                    src="https://placehold.co/80x80/000000/059669?text=YN" 
+                    alt="Your Name" 
+                    class="w-20 h-20 rounded-full border-4 border-gray-800 shadow-lg"
+                    onerror="this.onerror=null;this.src='https://placehold.co/80x80/000000/059669?text=YN';"
+                >
+                <div>
+                    <h1 class="text-3xl font-bold text-slate-100">Your Name</h1>
+                    <p class="text-lg text-green-500">Your Title / Role (e.g., Software Developer)</p>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="flex space-x-4">
+                <a href="#about" class="text-slate-300 hover:text-green-500 font-medium text-lg">About</a>
+                <a href="#projects" class="text-slate-300 hover:text-green-500 font-medium text-lg">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-green-500 font-medium text-lg">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+
+            <!-- About Me Section (Default Page) -->
+            <section id="about" class="page-section mb-16">
+                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> About Me</h2>
+                <div class="glass-card p-6 rounded-lg shadow-md space-y-4 text-slate-300 leading-relaxed">
+                    <p>
+                        Hello! I'm [Your Name], a passionate [Your Role] based in [Your Location]. I specialize in building exceptional digital experiences. 
+                        My journey in tech began [Start of your journey].
+                    </p>
+                    <p>
+                        I have a strong foundation in [Skill 1], [Skill 2], and [Skill 3]. I'm always eager to learn new technologies and apply them to solve real-world problems. 
+                        When I'm not coding, you can find me [Your Hobby].
+                    </p>
+                    <!-- Tech Stack / Skills -->
+                    <div class="pt-2">
+                        <h3 class="text-lg font-semibold text-slate-200 mb-3">> Core Toolkit</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Skill 1</span>
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Skill 2</span>
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">React</span>
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="page-section mb-16">
+                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Projects</h2>
+                <p class="text-slate-400 mb-6">A selection of things I've built.</p>
+                
+                <!-- Project Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="glass-card rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-green-700 border border-transparent">
+                        <img 
+                            src="https://placehold.co/600x400/000000/10b981?text=Project+1+Screenshot" 
+                            alt="Project 1 Screenshot" 
+                            class="w-full h-48 object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/10b981?text=Project+1';"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Project Name One</h3>
+                            <p class="text-slate-300 mb-4">
+                                A brief but clear description of the project, what it does, and the problem it solves.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">React</span>
+                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">Firebase</span>
+                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">AI API</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                                    <span data-lucide="github" class="w-4 h-4 mr-1.5"></span>
+                                    GitHub
+                                </a>
+                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                                    <span data-lucide="external-link" class="w-4 h-4 mr-1.5"></span>
+                                    Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="glass-card rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-green-700 border border-transparent">
+                        <img 
+                            src="https://placehold.co/600x400/000000/10b981?text=Project+2+Screenshot" 
+                            alt="Project 2 Screenshot" 
+                            class="w-full h-48 object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/10b981?text=Project+2';"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Project Name Two</h3>
+                            <p class="text-slate-300 mb-4">
+                                This project focused on data visualization, using D3.js to create interactive charts from user data.
+                            </T>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">D3.js</span>
+                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">Node.js</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                                    <span data-lucide="github" class="w-4 h-4 mr-1.5"></span>
+                                    GitHub
+                                </a>
+                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                                    <span data-lucide="external-link" class="w-4 h-4 mr-1.5"></span>
+                                    Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more project cards as needed -->
+
+                </div>
+            </section>
+
+            <!-- Contact / Socials Section -->
+            <section id="contact" class="page-section mb-16">
+                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Contact / Socials</h2>
+                <div class="glass-card p-6 rounded-lg shadow-md">
+                    <p class="text-slate-300 mb-6">
+                        I'm always open to discussing new projects or collaboration opportunities. Feel free to reach out!
+                    </p>
+                    <div class="flex flex-wrap gap-x-6 gap-y-4">
+                        <a href="mailto:youremail@example.com" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                            <span data-lucide="mail" class="w-5 h-5 mr-2"></span>
+                            youremail@example.com
+                        </a>
+                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                            <span data-lucide="github" class="w-5 h-5 mr-2"></span>
+                            GitHub
+                        </a>
+                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                            <span data-lucide="linkedin" class="w-5 h-5 mr-2"></span>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
+                            <span data-lucide="twitter" class="w-5 h-5 mr-2"></span>
+                            Twitter / X
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t border-slate-800">
+            <p class="text-sm text-slate-500">
+                © <span id="current-year"></span> Your Name. All rights reserved.
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript for Page Navigation -->
+    <script>
+        function handleNavigation() {
+            // Get all page sections
+            const sections = document.querySelectorAll('.page-section');
+            // Get the hash from the URL, or default to '#about'
+            const hash = window.location.hash || '#about';
+            
+            let pageFound = false;
+            sections.forEach(section => {
+                if ('#' + section.id === hash) {
+                    section.style.display = 'block';
+                    pageFound = true;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Fallback to 'about' page if hash is invalid
+            if (!pageFound) {
+                document.getElementById('about').style.display = 'block';
+            }
+        }
+
+        // Run navigation logic on initial page load
+        window.addEventListener('DOMContentLoaded', handleNavigation);
+        
+        // Run navigation logic whenever the hash changes
+        window.addEventListener('hashchange', handleNavigation);
+    </script>
+
+    <!-- Lucide Icons initialization script -->
+    <script>
+        lucide.createIcons();
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
