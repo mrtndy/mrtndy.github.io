@@ -1,209 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mert Aydin - Mechatronic Engineer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use VT323 font for retro feel -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <!-- VT323 font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
 
     <style>
         body {
             font-family: 'VT323', monospace;
             background-color: #000000;
-            color: #e5e7eb; /* Light gray text */
-            text-shadow: 0 0 3px rgba(52, 211, 153, 0.4); /* Subtle green glow */
+            color: #e5e7eb;
+            text-shadow: 0 0 3px rgba(52, 211, 153, 0.4);
         }
-        .glass-card {
-            background: rgba(24, 24, 27, 0.6); /* Dark translucent background */
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(55, 65, 81, 0.5); /* Dark gray border */
-        }
-        /* Custom scrollbar for dark theme */
-        body::-webkit-scrollbar {
-            width: 8px;
-        }
-        body::-webkit-scrollbar-track {
-            background: #111;
-        }
-        body::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        body::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* This class will be used by JS to hide/show pages */
-        .page-section {
-            display: none;
+        .text-green-link { color: #34d399; }
+        .text-green-link:hover { color: #a7f3d0; }
+
+        .page-section { display: none; }
+
+        .content-list { list-style-type: none; padding-left: 0; }
+        .content-list li { position: relative; padding-left: 1.5em; margin-bottom: 0.5em; }
+        .content-list li::before {
+            content: '*';
+            position: absolute; left: 0; top: 0;
+            color: #34d399;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased p-4 sm:p-6 lg:p-8">
 
-    <!-- Container -->
-    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="mb-10">
+            <h1 class="text-3xl font-bold text-slate-100">Mert Aydin</h1>
+            <p class="text-xl text-green-500">> Mechatronic Engineer</p>
+            <p class="text-slate-400 text-lg mt-1">Wollongong, New South Wales, Australia</p>
 
-        <!-- Header / Profile Section (Visible on all pages) -->
-        <header class="flex flex-col sm:flex-row items-center sm:justify-between mb-12">
-            <div class="flex items-center space-x-4 mb-4 sm:mb-0">
-                <img 
-                    src="https://placehold.co/80x80/000000/059669?text=YN" 
-                    alt="Your Name" 
-                    class="w-20 h-20 rounded-full border-4 border-gray-800 shadow-lg"
-                    onerror="this.onerror=null;this.src='https://placehold.co/80x80/000000/059669?text=YN';"
-                >
-                <div>
-                    <h1 class="text-3xl font-bold text-slate-100">Your Name</h1>
-                    <p class="text-lg text-green-500">Your Title / Role (e.g., Software Developer)</p>
-                </div>
-            </div>
-            
             <!-- Navigation -->
-            <nav class="flex space-x-4">
-                <a href="#about" class="text-slate-300 hover:text-green-500 font-medium text-lg">About</a>
-                <a href="#projects" class="text-slate-300 hover:text-green-500 font-medium text-lg">Projects</a>
-                <a href="#contact" class="text-slate-300 hover:text-green-500 font-medium text-lg">Contact</a>
+            <nav class="flex flex-wrap space-x-4 mt-6">
+                <a href="#about" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">About Me</a>
+                <a href="#experience" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Experience</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Skills</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Contact</a>
             </nav>
         </header>
 
-        <!-- Main Content -->
         <main>
-
-            <!-- About Me Section (Default Page) -->
+            <!-- About -->
             <section id="about" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> About Me</h2>
-                <div class="glass-card p-6 rounded-lg shadow-md space-y-4 text-slate-300 leading-relaxed">
+                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Summary</h2>
+                <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
                     <p>
-                        Hello! I'm [Your Name], a passionate [Your Role] based in [Your Location]. I specialize in building exceptional digital experiences. 
-                        My journey in tech began [Start of your journey].
+                        Control & Automation Engineer | Robotics enthusiast
                     </p>
-                    <p>
-                        I have a strong foundation in [Skill 1], [Skill 2], and [Skill 3]. I'm always eager to learn new technologies and apply them to solve real-world problems. 
-                        When I'm not coding, you can find me [Your Hobby].
-                    </p>
-                    <!-- Tech Stack / Skills -->
-                    <div class="pt-2">
-                        <h3 class="text-lg font-semibold text-slate-200 mb-3">> Core Toolkit</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Skill 1</span>
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Skill 2</span>
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">React</span>
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Node.js</span>
-                            <span class="bg-gray-800 text-green-400 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
-                        </div>
-                    </div>
                 </div>
+
+                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Education</h2>
+                <ul class="content-list text-slate-300">
+                    <li>
+                        <span class="text-slate-100">University of Wollongong (2019-2022):</span>
+                        Bachelor of Engineering - BE, Mechatronic Engineering
+                    </li>
+                </ul>
+                
+                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Publications</h2>
+                <ul class="content-list text-slate-300">
+                    <li><a href="https://ieeexplore.ieee.org/document/10102076/" class="text-green-link" target="_blank">Sensing-based Robustness Challenges in Agricultural Robotic Harvesting</a></li>
+                    <li><a href="https://www.mdpi.com/1424-8220/22/10/3779" class="text-green-link" target="_blank">Novel Soft Haptic Biofeedback- Pilot Study on Postural Balance and Proprioception</a></li>
+                    <li><a href="https://www.researchgate.net/publication/368304889_Variable_Stiffness_Improves_Safety_and_Performance_in_Soft_Robotics" class="text-green-link" target="_blank">Variable Stiffness Improves Safety and Performance in Soft Robotics</a></li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Certifications</h2>
+                <ul class="content-list text-slate-300">
+                    <li>
+                        <span class="text-slate-100">Fundamentals of Deep Learning</span>
+                        <ul class="content-list mt-2">
+                            <li>An overview of deep learning concepts, models, and applications.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://www.udacity.com/certificate/e/dc585bc8-c7c9-11eb-90a5-2701b3a11ae8" class="text-green-link" target="_blank">Intro to Self-Driving Cars Nanodegree Program</a>
+                        <ul class="content-list mt-2">
+                            <li>Covered computer vision, sensor fusion, and localization techniques for autonomous vehicles.</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Languages</h2>
+                <ul class="content-list text-slate-300">
+                    <li>English (Professional Working)</li>
+                    <li>Turkish (Native)</li>
+                    <li>German (Limited Working)</li>
+                </ul>
             </section>
 
-            <!-- Projects Section -->
-            <section id="projects" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Projects</h2>
-                <p class="text-slate-400 mb-6">A selection of things I've built.</p>
+            <!-- Experience -->
+            <section id="experience" class="page-section mb-16">
+                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Experience</h2>
+
+                <ul class="content-list text-slate-300 space-y-4">
+                    <li>
+                        <span class="text-slate-100">Control & Automation Engineer — Komatsu Mining. February 2023 - Present</span>
+                        <ul class="content-list mt-2">
+                            <li>Commissioning, testing and development of mining machinery control system components and integration.</li>
+                            <li>Engineering Support for Field technical queries from our customer base.</li>
+                            <li>Integrating new and existing hardware technologies into the control ecosystem.</li>
+                            <li>Developing Automation routines and safety-critical interlocks.</li>
+                            <li>Engineering Interaction with Service and Parts teams locally and interstate to technically support mining machinery products and their ongoing operational availability.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="text-slate-100">Casual Research Assistant — University of Wollongong. July 2019 - February 2023</span>
+                         <ul class="content-list mt-2">
+                            <li>Force plate design for a soft haptics research project.</li>
+                            <li>Designed a Matlab/Simulink based pneumatic control system.</li>
+                            <li>Conducted the experiments involving humans for the mentioned project.</li>
+                            <li>Integration of a 3D printed monolithic soft gripper with adjustable stiffness to Franka Emika Panda co-robot.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="text-slate-100">Laboratory Assistant — University of Wollongong. August 2020 - December 2020</span>
+                        <ul class="content-list mt-2">
+                            <li>Assisted the lab sessions for Biomedical Engineering classes.</li>
+                            <li>Have been responsible for the setup and the demonstration of the experiments.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" class="page-section mb-16">
+                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Skills</h2>
                 
-                <!-- Project Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <!-- Project Card 1 -->
-                    <div class="glass-card rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-green-700 border border-transparent">
-                        <img 
-                            src="https://placehold.co/600x400/000000/10b981?text=Project+1+Screenshot" 
-                            alt="Project 1 Screenshot" 
-                            class="w-full h-48 object-cover"
-                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/10b981?text=Project+1';"
-                        >
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Project Name One</h3>
-                            <p class="text-slate-300 mb-4">
-                                A brief but clear description of the project, what it does, and the problem it solves.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">React</span>
-                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">Firebase</span>
-                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">AI API</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                                    <span data-lucide="github" class="w-4 h-4 mr-1.5"></span>
-                                    GitHub
-                                </a>
-                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                                    <span data-lucide="external-link" class="w-4 h-4 mr-1.5"></span>
-                                    Live Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <h3 class="text-lg font-semibold text-slate-200 mb-3">> Top Skills</h3>
+                <ul class="content-list text-slate-300">
+                    <li>Control Systems Design</li>
+                    <li>Embedded Programming</li>
+                    <li>3D Design</li>
+                </ul>
 
-                    <!-- Project Card 2 -->
-                    <div class="glass-card rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-green-700 border border-transparent">
-                        <img 
-                            src="https://placehold.co/600x400/000000/10b981?text=Project+2+Screenshot" 
-                            alt="Project 2 Screenshot" 
-                            class="w-full h-48 object-cover"
-                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/10b981?text=Project+2';"
-                        >
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Project Name Two</h3>
-                            <p class="text-slate-300 mb-4">
-                                This project focused on data visualization, using D3.js to create interactive charts from user data.
-                            </T>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">D3.js</span>
-                                <span class="text-xs bg-gray-700 text-slate-300 px-2 py-1 rounded-full">Node.js</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                                    <span data-lucide="github" class="w-4 h-4 mr-1.5"></span>
-                                    GitHub
-                                </a>
-                                <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                                    <span data-lucide="external-link" class="w-4 h-4 mr-1.5"></span>
-                                    Live Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more project cards as needed -->
+                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Core Domains</h3>
+                <ul class="content-list text-slate-300">
+                    <li>Robotics</li>
+                    <li>Soft Robotics</li>
+                    <li>Mechatronics</li>
+                    <li>Fast Prototyping</li>
+                    <li>Control Systems</li>
+                    <li>Motion Control</li>
+                    <li>Mechanical Transmission Design</li>
+                    <li>Embedded Interfacing</li>
+                </ul>
 
-                </div>
+                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Design & Fabrication</h3>
+                <ul class="content-list text-slate-300">
+                    <li>CAD: Autodesk Inventor and Fusion</li>
+                    <li>3D Printing (FDM & SLA)</li>
+                    <li>CNC</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Software & Data</h3>
+                <ul class="content-list text-slate-300">
+                    <li>Python</li>
+                    <li>C/C++</li>
+                    <li>Computer Vision</li>
+                </ul>
             </section>
 
             <!-- Contact / Socials Section -->
             <section id="contact" class="page-section mb-16">
                 <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Contact / Socials</h2>
-                <div class="glass-card p-6 rounded-lg shadow-md">
-                    <p class="text-slate-300 mb-6">
-                        I'm always open to discussing new projects or collaboration opportunities. Feel free to reach out!
-                    </p>
-                    <div class="flex flex-wrap gap-x-6 gap-y-4">
-                        <a href="mailto:youremail@example.com" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                            <span data-lucide="mail" class="w-5 h-5 mr-2"></span>
-                            youremail@example.com
-                        </a>
-                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                            <span data-lucide="github" class="w-5 h-5 mr-2"></span>
-                            GitHub
-                        </a>
-                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                            <span data-lucide="linkedin" class="w-5 h-5 mr-2"></span>
-                            LinkedIn
-                        </a>
-                        <a href="#" class="text-green-500 hover:text-green-400 font-medium inline-flex items-center">
-                            <span data-lucide="twitter" class="w-5 h-5 mr-2"></span>
-                            Twitter / X
-                        </a>
-                    </div>
-                </div>
+                <p class="text-slate-400 mb-6">Open to discussing roles in robotics and control & automation.</p>
+                <ul class="content-list text-slate-300">
+                    <li>Email (<a href="mailto:mrtndy@outlook.com" class="text-green-link">mrtndy@outlook.com</a>)</li>
+                    <li>LinkedIn (<a href="https://www.linkedin.com/in/mert-aydin-395480168" class="text-green-link" target="_blank">Mert Aydın</a>)</li>
+                </ul>
             </section>
 
         </main>
@@ -211,7 +188,7 @@
         <!-- Footer -->
         <footer class="text-center mt-12 py-6 border-t border-slate-800">
             <p class="text-sm text-slate-500">
-                © <span id="current-year"></span> Your Name. All rights reserved.
+                // © <span id="current-year"></span> Mert Aydin
             </p>
         </footer>
 
@@ -222,10 +199,14 @@
         function handleNavigation() {
             // Get all page sections
             const sections = document.querySelectorAll('.page-section');
+            // Get all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
             // Get the hash from the URL, or default to '#about'
             const hash = window.location.hash || '#about';
             
             let pageFound = false;
+            let activeHash = hash;
+
             sections.forEach(section => {
                 if ('#' + section.id === hash) {
                     section.style.display = 'block';
@@ -236,9 +217,21 @@
             });
 
             // Fallback to 'about' page if hash is invalid
-            if (!pageFound) {
+            if (!pageFound && sections.length > 0) {
                 document.getElementById('about').style.display = 'block';
+                activeHash = '#about'; // Set activeHash to fallback
             }
+
+            // Update active link
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === activeHash) {
+                    link.classList.add('text-green-500');
+                    link.classList.remove('text-slate-300');
+                } else {
+                    link.classList.remove('text-green-500');
+                    link.classList.add('text-slate-300');
+                }
+            });
         }
 
         // Run navigation logic on initial page load
@@ -248,12 +241,11 @@
         window.addEventListener('hashchange', handleNavigation);
     </script>
 
-    <!-- Lucide Icons initialization script -->
+    <!-- Set current year in footer -->
     <script>
-        lucide.createIcons();
-        
-        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
+
+
