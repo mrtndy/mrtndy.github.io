@@ -1,251 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mert Aydin — Control and Automation Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mert Aydin — Control and Automation Engineer</title>
 
-  <!-- Tailwind CSS CDN. Replace with a built CSS file in production. -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts: VT323 for headings, Inter for body -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-  <!-- Meta and social cards. Replace placeholders with your final domain and image when available. -->
-  <meta name="description" content="Control and automation engineer in NSW. Robotics, motion control, embedded systems." />
-  <!-- <link rel="canonical" href="https://YOUR-DOMAIN/" /> -->
-  <meta property="og:title" content="Mert Aydin — Control and Automation Engineer" />
-  <meta property="og:description" content="Robotics, motion control, embedded, soft robotics publications." />
-  <!-- <meta property="og:url" content="https://YOUR-DOMAIN/" /> -->
-  <!-- <meta property="og:image" content="https://YOUR-DOMAIN/og.png" /> -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="description" content="Control and automation engineer in NSW. Robotics, motion control, embedded systems." />
+    <meta property="og:title" content="Mert Aydin — Control and Automation Engineer" />
+  <meta property="og:description" content="Robotics, motion control, embedded, soft robotics publications." />
+      <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
 
-  <style>
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background-color: #000; color: #e5e7eb; }
-    h1, h2, h3 { font-family: 'VT323', monospace; }
-    /* Base link treatment for clarity and accessibility */
-    a { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 0.08em; }
-    a:hover { opacity: 0.9; }
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    h1, h2, h3 { font-family: 'VT323', monospace; }
+    /* Base link treatment for clarity and accessibility */
+    a { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 0.08em; }
+    a:hover { opacity: 0.9; }
 
-    /* Print stylesheet for a clean one pager */
-    @media print {
-      body { background: #fff; color: #000; }
-      nav, footer { display: none !important; }
-      a { color: #000; text-decoration: none; }
-      .page-section { display: block !important; }
-      .container { max-width: none !important; padding: 0 !important; }
-    }
-  </style>
+    /* Print stylesheet for a clean one pager */
+    @media print {
+      body { background: #fff; color: #000; }
+      nav, footer { display: none !important; }
+      a { color: #000; text-decoration: none; }
+      .page-section { display: block !important; }
+      .container { max-width: none !important; padding: 0 !important; }
+    }
+  </style>
 
-  <!-- Structured data: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mert Aydin",
-    "jobTitle": "Control and Automation Engineer",
-    "address": {"@type":"PostalAddress","addressRegion":"NSW","addressLocality":"Wollongong","addressCountry":"AU"},
-    "email": "mailto:mrtndy@outlook.com",
-    "url": "",
-    "sameAs": ["https://www.linkedin.com/in/mert-aydin-395480168"]
-  }
-  </script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mert Aydin",
+    "jobTitle": "Control and Automation Engineer",
+    "address": {"@type":"PostalAddress","addressRegion":"NSW","addressLocality":"Wollongong","addressCountry":"AU"},
+    "email": "mailto:mrtndy@outlook.com",
+    "sameAs": ["https://www.linkedin.com/in/mert-aydin-395480168"]
+  }
+  </script>
 </head>
-<body class="antialiased p-4 sm:p-6 lg:p-8">
-  <!-- Skip link for keyboard users -->
-  <a href="#about" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-black focus:text-white focus:px-3 focus:py-1">Skip to content</a>
+<body class="bg-black text-gray-200 antialiased p-4 sm:p-6 lg:p-8">
+    <a href="#about" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-black focus:text-white focus:px-3 focus:py-1">Skip to content</a>
 
-  <div class="container max-w-3xl mx-auto">
-    <!-- Header -->
-    <header class="mb-10">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <h1 class="text-3xl font-bold text-slate-100">Mert Aydin</h1>
-          <p class="text-xl text-emerald-400">&gt; Control and Automation Engineer</p>
-          <p class="text-slate-400 text-lg mt-1">Wollongong, New South Wales, Australia</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href="#" onclick="window.print(); return false;" class="text-slate-200 hover:text-emerald-300 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Print</a>
-          <span aria-hidden="true" class="text-slate-600">|</span>
-          <a href="/resume.pdf" class="text-slate-200 hover:text-emerald-300 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Download PDF</a>
-        </div>
-      </div>
+  <div class="container max-w-3xl mx-auto">
+        <header class="mb-10">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-bold text-slate-100">Mert Aydin</h1>
+          <p class="text-xl text-emerald-400">&gt; Control and Automation Engineer</p>
+          <p class="text-slate-400 text-lg mt-1">Wollongong, New South Wales, Australia</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="window.print();" class="text-slate-200 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Print</button>
+          <span aria-hidden="true" class="text-slate-600">|</span>
+          <a href="/resume.pdf" class="text-slate-200 hover:text-emerald-300 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Download PDF</a>
+        </div>
+      </div>
 
-      <!-- Navigation -->
-      <nav class="flex flex-wrap gap-x-4 gap-y-2 mt-6" aria-label="Primary">
-        <a href="#about" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">About Me</a>
-        <a href="#experience" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Experience</a>
-        <a href="#skills" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Skills</a>
-        <a href="#contact" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Contact</a>
-      </nav>
-    </header>
+            <nav class="flex flex-wrap gap-x-4 gap-y-2 mt-6" aria-label="Primary">
+        <a href="#about" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">About Me</a>
+        <a href="#experience" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Experience</a>
+        <a href="#skills" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Skills</a>
+        <a href="#contact" class="nav-link text-slate-300 hover:text-emerald-400 font-medium text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">Contact</a>
+      </nav>
+    </header>
 
-    <main>
-      <!-- About -->
-      <section id="about" class="page-section hidden mb-16" aria-label="About">
-        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Summary</h2>
-        <div class="space-y-4 text-slate-200 leading-relaxed text-lg">
-          <p>Control and automation engineer focused on reliable motion systems and field-ready robotics. Strong in embedded, controls, and rapid prototyping.</p>
-        </div>
+    <main>
+            <section id="about" class="page-section hidden mb-16" aria-label="About">
+        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Summary</h2>
+        <div class="space-y-4 text-slate-200 leading-relaxed text-lg">
+          <p>Control and automation engineer focused on reliable motion systems and field-ready robotics. Strong in embedded, controls, and rapid prototyping.</p>
+        </div>
 
-        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Education</h2>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li><span class="text-slate-100">University of Wollongong</span>. Bachelor of Engineering, Mechatronic Engineering.</li>
-        </ul>
+        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Education</h2>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li><span class="text-slate-100">University of Wollongong</span>. Bachelor of Engineering, Mechatronic Engineering.</li>
+        </ul>
 
-        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Publications</h2>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li><a href="https://ieeexplore.ieee.org/document/10102076/" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Sensing based Robustness Challenges in Agricultural Robotic Harvesting</a></li>
-          <li><a href="https://www.mdpi.com/1424-8220/22/10/3779" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Novel Soft Haptic Biofeedback. Pilot Study on Postural Balance and Proprioception</a></li>
-          <li><a href="https://www.researchgate.net/publication/368304889_Variable_Stiffness_Improves_Safety_and_Performance_in_Soft_Robotics" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Variable Stiffness Improves Safety and Performance in Soft Robotics</a></li>
-        </ul>
+        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Publications</h2>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li><a href="https://ieeexplore.ieee.org/document/10102076/" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Sensing based Robustness Challenges in Agricultural Robotic Harvesting</a></li>
+          <li><a href="https://www.mdpi.com/1424-8220/22/10/3779" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Novel Soft Haptic Biofeedback. Pilot Study on Postural Balance and Proprioception</a></li>
+          <li><a href="https://www.researchgate.net/publication/368304889_Variable_Stiffness_Improves_Safety_and_Performance_in_Soft_Robotics" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Variable Stiffness Improves Safety and Performance in Soft Robotics</a></li>
+        </ul>
 
-        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Certifications</h2>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-4">
-          <li>
-            <span class="text-slate-100">Fundamentals of Deep Learning</span>
-            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-1 text-slate-300">
-              <li>Overview of deep learning concepts, models, and applications.</li>
-            </ul>
-          </li>
-          <li>
-            <a href="https://www.udacity.com/certificate/e/dc585bc8-c7c9-11eb-90a5-2701b3a11ae8" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Intro to Self Driving Cars Nanodegree Program</a>
-            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-1 text-slate-300">
-              <li>Computer vision, sensor fusion, and localization for autonomous vehicles.</li>
-            </ul>
-          </li>
-        </ul>
+        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Certifications</h2>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-4">
+          <li>
+            <span class="text-slate-100">Fundamentals of Deep Learning</span>
+            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-1 text-slate-300">
+              <li>Overview of deep learning concepts, models, and applications.</li>
+    T       </ul>
+          </li>
+          <li>
+            <a href="https://www.udacity.com/certificate/e/dc585bc8-c7c9-11eb-90a5-2701b3a11ae8" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Intro to Self Driving Cars Nanodegree Program</a>
+            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-1 text-slate-300">
+              <li>Computer vision, sensor fusion, and localization for autonomous vehicles.</li>
+            </ul>
+          </li>
+        </ul>
 
-        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Languages</h2>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>English. Professional Working.</li>
-          <li>Turkish. Native.</li>
-          <li>German. Limited Working.</li>
-        </ul>
-      </section>
+        <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">&gt; Languages</h2>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li>English. Professional Working.</li>
+          <li>Turkish. Native.</li>
+          <li>German. Limited Working.</li>
+        </ul>
+      </section>
 
-      <!-- Experience -->
-      <section id="experience" class="page-section hidden mb-16" aria-label="Experience">
-        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Experience</h2>
-        <ul class="space-y-6">
-          <li class="text-slate-200">
-            <p class="text-slate-100">Control and Automation Engineer — Komatsu Mining. February 2023 to Present</p>
-            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
-              <li>Commission and validate control subsystems across mining machines. Integrate new and existing hardware into the control ecosystem.</li>
-              <li>Provide engineering support for field technical queries and close the loop with design and test teams.</li>
-              <li>Develop automation routines and safety critical interlocks with documented test coverage.</li>
-              <li>Coordinate with Service and Parts teams locally and interstate to support product reliability and operational availability.</li>
-            </ul>
-          </li>
+            <section id="experience" class="page-section hidden mb-16" aria-label="Experience">
+        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Experience</h2>
+        <ul class="space-y-6">
+          <li class="text-slate-200">
+            <p class="text-slate-100">Control and Automation Engineer — Komatsu Mining. February 2023 to Present</p>
+            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
+              <li>Commission and validate control subsystems across mining machines. Integrate new and existing hardware into the control ecosystem.</li>
+              <li>Provide engineering support for field technical queries and close the loop with design and test teams.</li>
+              <li>Develop automation routines and safety critical interlocks with documented test coverage.</li>
+              <li>Coordinate with Service and Parts teams locally and interstate to support product reliability and operational availability.</li>
+            </ul>
+        _ </li>
 
-          <li class="text-slate-200">
-            <p class="text-slate-100">Casual Research Assistant — University of Wollongong. July 2019 to February 2023</p>
-            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
-              <li>Design and iteration of a force plate for soft haptics research. Build, calibrate, and validate across experiments.</li>
-              <li>Develop and maintain a MATLAB and Simulink pneumatic control system for experiments and analysis.</li>
-              <li>Plan and execute repeated human participant studies. Protocol prep, setup, data capture, and reporting.</li>
-              <li>Develop, integrate, and maintain a 3D printed monolithic soft gripper with adjustable stiffness on the Franka Emika Panda cobot. Validate in repeated trials.</li>
-            </ul>
-          </li>
+          <li class="text-slate-200">
+        _   <p class="text-slate-100">Casual Research Assistant — University of Wollongong. July 2019 to February 2023</p>
+            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
+  trl         <li>Design and iteration of a force plate for soft haptics research. Build, calibrate, and validate across experiments.</li>
+              <li>Develop and maintain a MATLAB and Simulink pneumatic control system for experiments and analysis.</li>
+              <li>Plan and execute repeated human participant studies. Protocol prep, setup, data capture, and reporting.</li>
+              <li>Develop, integrate, and maintain a 3D printed monolithic soft gripper with adjustable stiffness on the Franka Emika Panda cobot. Validate in repeated trials.</li>
+            </ul>
+          </li>
 
-          <li class="text-slate-200">
-            <p class="text-slate-100">Laboratory Assistant — University of Wollongong. August 2020 to December 2020</p>
-            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
-              <li>Support Biomedical Engineering labs. Prepare equipment, verify setups, and run live demonstrations.</li>
-              <li>Create and update setup checklists and troubleshooting notes to improve consistency and safety.</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+          <li class="text-slate-200">
+            <p class="text-slate-100">Laboratory Assistant — University of Wollongong. August 2020 to December 2020</p>
+            <ul class="list-disc pl-6 marker:text-emerald-400 mt-2 space-y-2">
+S             <li>Support Biomedical Engineering labs. Prepare equipment, verify setups, and run live demonstrations.</li>
+              <li>Create and update setup checklists and troubleshooting notes to improve consistency and safety.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
 
-      <!-- Skills -->
-      <section id="skills" class="page-section hidden mb-16" aria-label="Skills">
-        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Skills</h2>
+            <section id="skills" class="page-section hidden mb-16" aria-label="Skills">
+	     <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Skills</h2>
 
-        <h3 class="text-lg font-semibold text-slate-200 mb-3">&gt; Top Skills</h3>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>Control Systems Design</li>
-          <li>Embedded Programming</li>
-          <li>3D Design</li>
-        </ul>
+        <h3 class="text-lg font-semibold text-slate-200 mb-3">&gt; Top Skills</h3>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li>Control Systems Design</li>
+          <li>Embedded Programming</li>
+          <li>3D Design</li>
+        </ul>
 
-        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Core Domains</h3>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>Robotics</li>
-          <li>Soft Robotics</li>
-          <li>Mechatronics</li>
-          <li>Rapid Prototyping</li>
-          <li>Control Systems</li>
-          <li>Motion Control</li>
-          <li>Mechanical Transmission Design</li>
-          <li>Embedded Interfacing</li>
-        </ul>
+        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Core Domains</h3>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li>Robotics</li>
+          <li>Soft Robotics</li>
+          <li>Mechatronics</li>
+          <li>Rapid Prototyping</li>
+Services         <li>Control Systems</li>
+          <li>Motion Control</li>
+          <li>Mechanical Transmission Design</li>
+          <li>Embedded Interfacing</li>
+        </ul>
 
-        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Design and Fabrication</h3>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>CAD. Autodesk Inventor and Fusion.</li>
-          <li>3D Printing. FDM and SLA.</li>
-          <li>CNC.</li>
-        </ul>
+        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Design and Fabrication</h3>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li>CAD. Autodesk Inventor and Fusion.</li>
+    Details       <li>3D Printing. FDM and SLA.</li>
+          <li>CNC.</li>
+        </ul>
 
-        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Software and Data</h3>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>Python</li>
-          <li>C and C++</li>
-          <li>Computer Vision</li>
-        </ul>
-      </section>
+        <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">&gt; Software and Data</h3>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+          <li>Python</li>
+          <li>C and C++</li>
+  A         <li>Computer Vision</li>
+        </ul>
+      </section>
 
-      <!-- Contact / Socials -->
-      <section id="contact" class="page-section hidden mb-16" aria-label="Contact">
-        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Contact and Socials</h2>
-        <p class="text-slate-400 mb-6">Open to roles in robotics and control and automation.</p>
-        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
-          <li>Email. <a href="mailto:mrtndy@outlook.com" class="text-emerald-300">mrtndy@outlook.com</a></li>
-          <li>LinkedIn. <a href="https://www.linkedin.com/in/mert-aydin-395480168" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Mert Aydın</a></li>
-        </ul>
-      </section>
-    </main>
+            <section id="contact" class="page-section hidden mb-16" aria-label="Contact">
+        <h2 class="text-2xl font-semibold text-slate-100 mb-4">&gt; Contact and Socials</h2>
+        <p class="text-slate-400 mb-6">Open to roles in robotics and control and automation.</p>
+        <ul class="list-disc pl-6 marker:text-emerald-400 text-slate-200 space-y-2">
+Where         <li>Email. <a href="mailto:mrtndy@outlook.com" class="text-emerald-300">mrtndy@outlook.com</a></li>
+          <li>LinkedIn. <a href="https://www.linkedin.com/in/mert-aydin-395480168" class="text-emerald-300" target="_blank" rel="noopener noreferrer">Mert Aydın</a></li>
+        </ul>
+      </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="text-center mt-12 py-6 border-t border-slate-800">
-      <p class="text-sm text-slate-500">© <span id="current-year"></span> Mert Aydin</p>
-    </footer>
-  </div>
+        <footer class="text-center mt-12 py-6 border-t border-slate-800">
+Click       <p class="text-sm text-slate-500">© <span id="current-year"></span> Mert Aydin</p>
+    </footer>
+  </div>
 
-  <!-- Navigation logic with hidden class and ARIA management -->
-  <script>
-    function handleNavigation() {
-      const sections = document.querySelectorAll('.page-section');
-      const navLinks = document.querySelectorAll('.nav-link');
-      const hash = window.location.hash || '#about';
-      const active = document.querySelector(hash) || document.getElementById('about');
+    <script>
+    function handleNavigation() {
+      const sections = document.querySelectorAll('.page-section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const hash = window.location.hash || '#about';
+      const active = document.querySelector(hash) || document.getElementById('about');
 
-      sections.forEach(section => {
-        const isActive = section === active;
-        section.classList.toggle('hidden', !isActive);
-        section.setAttribute('aria-hidden', String(!isActive));
-        section.setAttribute('tabindex', isActive ? '0' : '-1');
-      });
+J       sections.forEach(section => {
+        const isActive = section === active;
+        section.classList.toggle('hidden', !isActive);
+        section.setAttribute('aria-hidden', String(!isActive));
+        section.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
 
-      navLinks.forEach(link => {
-        const isActive = link.getAttribute('href') === '#' + active.id;
-        link.classList.toggle('text-emerald-400', isActive);
-        link.classList.toggle('text-slate-300', !isActive);
-        link.setAttribute('aria-current', isActive ? 'page' : 'false');
-      });
-    }
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + active.id;
+Next         link.classList.toggle('text-emerald-400', isActive);
+        link.classList.toggle('text-slate-300', !isActive);
+        link.setAttribute('aria-current', isActive ? 'page' : 'false');
+      });
+    }
 
-    window.addEventListener('DOMContentLoaded', handleNavigation);
-    window.addEventListener('hashchange', handleNavigation);
-  </script>
+    window.addEventListener('DOMContentLoaded', handleNavigation);
+    window.addEventListener('hashchange', handleNavigation);
+  </script>
 
-  <!-- Current year in footer -->
-  <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
