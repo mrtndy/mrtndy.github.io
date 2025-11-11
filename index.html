@@ -28,10 +28,15 @@
         .content-list { list-style-type: none; padding-left: 0; }
         .content-list li { position: relative; padding-left: 1.5em; margin-bottom: 0.5em; }
         .content-list li::before {
-            content: '*';
+            content: '>';
             position: absolute; left: 0; top: 0;
             color: #34d399;
         }
+        /* Specific style for sub-lists to have a different bullet */
+        .content-list .content-list li::before {
+             content: '*';
+        }
+
 
         /* Blinking cursor animation */
         .blinking-cursor {
@@ -48,198 +53,151 @@
     <div class="max-w-3xl mx-auto">
         <!-- Header -->
         <header class="mb-10">
-            <h1 class="text-3xl font-bold text-slate-100">Mert Aydin</h1>
-            <p class="text-xl text-green-500">> Mechatronic Engineer<span class="blinking-cursor">_</span></p>
-            <p class="text-slate-400 text-lg mt-1">Southern Highlands, NSW, Australia</p>
+            <h1 class="text-4xl sm:text-5xl font-bold text-slate-100 tracking-wider">Mert Aydin</h1>
+            <p class="text-xl sm:text-2xl text-green-500 mt-2">> Control & Automation Engineer<span class="blinking-cursor">_</span></p>
+            <div class="text-slate-400 text-lg mt-4 flex flex-wrap gap-4 items-center">
+                <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i> Moss Vale, NSW, Australia</span>
+                <span class="hidden sm:inline">|</span>
+                <a href="mailto:mrtndy@outlook.com" class="flex items-center hover:text-green-400 transition-colors"><i data-lucide="mail" class="w-4 h-4 mr-2"></i> mrtndy@outlook.com</a>
+                <span class="hidden sm:inline">|</span>
+                <span class="flex items-center"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> +61 426 377 563</span>
+            </div>
 
             <!-- Navigation -->
-            <nav class="flex flex-wrap space-x-4 mt-6">
-                <a href="#about" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">About Me</a>
-                <a href="#experience" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Experience</a>
-                <a href="#projects" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Projects</a>
-                <a href="#skills" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Skills</a>
-                <a href="#contact" class="nav-link text-slate-300 hover:text-green-500 font-medium text-lg">Contact</a>
+            <nav class="flex flex-wrap gap-4 sm:gap-6 mt-8 border-b border-slate-800 pb-4">
+                <a href="#experience" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EXPERIENCE ]</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ SKILLS ]</a>
+                <a href="#education" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EDUCATION ]</a>
             </nav>
         </header>
 
         <main>
-            <!-- About -->
-            <section id="about" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Summary</h2>
-                <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
-                    <p>
-                        Control & Automation Engineer | Robotics enthusiast
-                    </p>
-                </div>
-
-                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Education</h2>
-                <ul class="content-list text-slate-300">
-                    <li>
-                        <span class="text-slate-100">University of Wollongong:</span>
-                        Bachelor of Engineering - BE, Mechatronic Engineering
-                    </li>
-                </ul>
-                
-                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Publications</h2>
-                <ul class="content-list text-slate-300">
-                    <li><a href="https://ieeexplore.ieee.org/document/10934824" class="text-green-link" target="_blank">Sensing-based Robustness Challenges in Agricultural Robotic Harvesting</a></li>
-                    <li><a href="https://www.mdpi.com/1424-8220/22/10/3779" class="text-green-link" target="_blank">Novel Soft Haptic Biofeedback- Pilot Study on Postural Balance and Proprioception</a></li>
-                    <li><a href="https://ieeexplore.ieee.org/document/10102076/" class="text-green-link" target="_blank">Variable Stiffness Improves Safety and Performance in Soft Robotics</a></li>
-                </ul>
-
-                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Certifications</h2>
-                <ul class="content-list text-slate-300">
-                     <li>
-                        <span class="text-slate-100">Fundamentals of Deep Learning</span>
-                        <ul class="content-list mt-2">
-                            <li>An overview of deep learning concepts, models, and applications.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="https://www.udacity.com/certificate/e/dc585bc8-c7c9-11eb-90a5-2701b3a11ae8" class="text-green-link" target="_blank">Intro to Self-Driving Cars Nanodegree Program</a>
-                        <ul class="content-list mt-2">
-                            <li>Covered computer vision, sensor fusion, and localization techniques for autonomous vehicles.</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Languages</h2>
-                <ul class="content-list text-slate-300">
-                    <li>English (Professional Working)</li>
-                    <li>Turkish (Native)</li>
-                    <li>German (Limited Working)</li>
-                </ul>
-            </section>
-
             <!-- Experience -->
-            <section id="experience" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Experience</h2>
+            <section id="experience" class="page-section mb-16 animate-fade-in">
+                <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
+                    <i data-lucide="briefcase" class="w-6 h-6 mr-3"></i>EXPERIENCE
+                </h2>
 
-                <ul class="content-list text-slate-300 space-y-4">
-                    <li>
-                        <span class="text-slate-100">Control & Automation Engineer — Komatsu Mining. February 2023 - Present</span>
-                        <ul class="content-list mt-2">
-                            <li>Commissioning, testing and development of mining machinery control system components and integration.</li>
-                            <li>Engineering Support for Field technical queries from our customer base.</li>
-                            <li>Integrating new and existing hardware technologies into the control ecosystem.</li>
-                            <li>Developing Automation routines and safety-critical interlocks.</li>
-                            <li>Engineering Interaction with Service and Parts teams locally and interstate to technically support mining machinery products and their ongoing operational availability.</li>
+                <div class="space-y-10">
+                    <!-- Job 1 -->
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
+                            <h3 class="text-2xl text-slate-100 font-bold">Komatsu Mining</h3>
+                            <span class="text-green-400 text-lg">Feb 2023 - Present</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 text-slate-400 text-lg">
+                             <span class="italic">Control and Automation Engineer</span>
+                             <span>Moss Vale, Australia</span>
+                        </div>
+                        <ul class="content-list text-slate-300 text-lg space-y-2">
+                            <li>Commissioned, tested, and developed mining machinery control-system components and integrations.</li>
+                            <li>Provided engineering support for field technical queries from a national customer base.</li>
+                            <li>Integrated new and existing hardware technologies into the control ecosystem.</li>
+                            <li>Developed automation routines and safety-critical interlocks.</li>
+                            <li>Collaborated with Service and Parts teams across Australia to ensure ongoing operational availability of mining machinery products.</li>
                         </ul>
-                    </li>
+                    </div>
 
-                    <li>
-                        <span class="text-slate-100">Casual Research Assistant — University of Wollongong. July 2019 - February 2023</span>
-                         <ul class="content-list mt-2">
-                            <li>Designed and validated custom sensing hardware for soft haptics studies.</li>
-                            <li>Developed model based pneumatic control systems with simulation and real time testing.</li>
-                            <li>Planned and ran human participant experiments with data collection and analysis.</li>
-                            <li>Designed, manufactured and integrated a soft robotic gripper with adjustable stiffness to a collaborative robot.</li>
+                    <!-- Job 2 -->
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
+                            <h3 class="text-2xl text-slate-100 font-bold">University of Wollongong</h3>
+                            <span class="text-green-400 text-lg">July 2019 - Feb 2023</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 text-slate-400 text-lg">
+                             <span class="italic">Casual Research Assistant (part-time)</span>
+                             <span>Wollongong, Australia</span>
+                        </div>
+                        <ul class="content-list text-slate-300 text-lg space-y-2">
+                            <li>Designed and implemented a pneumatic control system using MATLAB / Simulink.</li>
+                            <li>Integrated a 3D-printed monolithic soft gripper with adjustable stiffness into a six-degree-of-freedom collaborative robot.</li>
+                            <li>Developed ARM-based real-time embedded control units for omnidirectional mobile robots.</li>
+                            <li>Designed and manufactured a robotic leg for prosthetic testing applications.</li>
                         </ul>
-                    </li>
-
-                    <li>
-                        <span class="text-slate-100">Laboratory Assistant — University of Wollongong. August 2020 - December 2020</span>
-                        <ul class="content-list mt-2">
-                            <li>Assisted the lab sessions for Biomedical Engineering classes.</li>
-                            <li>Have been responsible for the setup and the demonstration of the experiments.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Projects -->
-            <section id="projects" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Projects</h2>
-                <p class="text-slate-400 mb-6">A selection of projects and technical work.</p>
-
-                <ul class="content-list text-slate-300 space-y-4">
-                    <li>
-                        <span class="text-slate-100">DIY Robotic Arm</span>
-                        <ul class="content-list mt-2">
-                            <li>Weight reduction/precise control. Load 1-3kg. PLA/CF filament.</li>
-                            <li><a href="https://github.com/your-username/repo-name" class="text-green-link" target="_blank">[View on GitHub]</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <span class="text-slate-100">PLA Cycloidal Drive Prototype</span>
-                        <ul class="content-list mt-2">
-                            <li>High-precision, 1:15 ratio. Target 20 Nm.</li>
-                            <li><a href="link-to-your-cad-file.pdf" class="text-green-link" target="_blank">[View CAD Drawings (PDF)]</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <span class="text-slate-100">Image-to-Table Extraction</span>
-                        <ul class="content-list mt-2">
-                            <li>Full offline stack. YOLOv8 detection, GUI, and OCR on crops.</li>
-                            <li><a href="link-to-your-report.pdf" class="text-green-link" target="_blank">[Read Project Report (PDF)]</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <span class="text-slate-100">Local Speech-to-Speech Assistant</span>
-                        <ul class="content-list mt-2">
-                            <li>Offline pipeline. ASR with faster-whisper on CUDA using int8_float16.</li>
-                            <li>LLM via Ollama running Qwen2.5 7B Instruct.</li>
-                            <li>TTS with Piper ONNX voice. Silence detection and timing metrics.</li>
-                            <li><a href="https://github.com/mrtndy/local-s2s-assistant" class="text-green-link" target="_blank">[View on GitHub]</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Skills -->
-            <section id="skills" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mt-10 mb-4">> Skills</h2>
+            <section id="skills" class="page-section mb-16 animate-fade-in">
+                <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
+                    <i data-lucide="cpu" class="w-6 h-6 mr-3"></i>TECHNICAL_SKILLS
+                </h2>
                 
-                <h3 class="text-lg font-semibold text-slate-200 mb-3">> Top Skills</h3>
-                <ul class="content-list text-slate-300">
-                    <li>Control Systems Design</li>
-                    <li>Embedded Programming</li>
-                    <li>3D Design</li>
-                </ul>
-
-                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Core Domains</h3>
-                <ul class="content-list text-slate-300">
-                    <li>Robotics</li>
-                    <li>Soft Robotics</li>
-                    <li>Mechatronics</li>
-                    <li>Fast Prototyping</li>
-                    <li>Control Systems</li>
-                    <li>Motion Control</li>
-                    <li>Mechanical Transmission Design</li>
-                    <li>Embedded Interfacing</li>
-                </ul>
-
-                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Design & Fabrication</h3>
-                <ul class="content-list text-slate-300">
-                    <li>CAD: Autodesk Inventor and Fusion</li>
-                    <li>3D Printing (FDM & SLA)</li>
-                    <li>CNC</li>
-                </ul>
-
-                <h3 class="text-lg font-semibold text-slate-200 mt-6 mb-3">> Software & Data</h3>
-                <ul class="content-list text-slate-300">
-                    <li>Python</li>
-                    <li>C/C++</li>
-                    <li>Computer Vision</li>
-                </ul>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                    <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm">
+                        <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="code-2" class="w-4 h-4 mr-2"></i> Programming</h3>
+                        <p class="text-slate-300">C / C++, Python, MATLAB, Simulink</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm">
+                        <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="microchip" class="w-4 h-4 mr-2"></i> Embedded Systems</h3>
+                        <p class="text-slate-300">STM32, Raspberry Pi, ARM-based microcontrollers</p>
+                    </div>
+                     <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm">
+                        <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="box" class="w-4 h-4 mr-2"></i> CAD Software</h3>
+                        <p class="text-slate-300">Autodesk Inventor, Fusion, SolidWorks</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm">
+                        <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="hammer" class="w-4 h-4 mr-2"></i> Fabrication</h3>
+                        <p class="text-slate-300">3D Printing (SLA/FDM), CNC, rapid prototyping</p>
+                    </div>
+                     <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm md:col-span-2">
+                        <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="bot" class="w-4 h-4 mr-2"></i> Robotics</h3>
+                        <p class="text-slate-300">Soft robotics design, motor control systems, pneumatic control systems, sensor integration</p>
+                    </div>
+                </div>
+                 <div class="mt-6">
+                    <h3 class="text-xl text-slate-200 mb-2 font-bold">> Languages</h3>
+                     <p class="text-slate-300 text-lg">Turkish (native), English (fluent), German (intermediate)</p>
+                </div>
             </section>
 
-            <!-- Contact / Socials Section -->
-            <section id="contact" class="page-section mb-16">
-                <h2 class="text-2xl font-semibold text-slate-100 mb-4">> Contact / Socials</h2>
-                <p class="text-slate-400 mb-6">Open to discussing roles in robotics and control & automation</p>
-                <ul class="content-list text-slate-300">
-                    <li class="flex items-center">
-                        <span data-lucide="mail" class="w-4 h-4 mr-2 text-green-500"></span>
-                        <span>Email (<a href="mailto:mrtndy@outlook.com" class="text-green-link">mrtndy@outlook.com</a>)</span>
+             <!-- Education & Certs -->
+            <section id="education" class="page-section mb-16 animate-fade-in">
+                <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 mr-3"></i>EDUCATION_&_CERTS
+                </h2>
+
+                <div class="mb-10">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
+                         <h3 class="text-2xl text-slate-100 font-bold">University of Wollongong, Australia</h3>
+                         <span class="text-green-400 text-lg">2019 - 2022</span>
+                    </div>
+                    <p class="text-slate-300 text-xl mb-1">Bachelor of Engineering (Honours) in Mechatronic Engineering</p>
+                    <p class="text-slate-400 text-lg italic">University Excellence Scholarship (March 2020)</p>
+                </div>
+
+                 <h3 class="text-xl text-slate-200 mb-4 font-bold border-b border-slate-800 pb-2">> CERTIFICATES</h3>
+                 <div class="space-y-6">
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start mb-1">
+                            <a href="https://www.eit.edu.au/courses/professional-certificate-of-competency-advanced-tcp-ip-based-industrial-networking/" target="_blank" class="text-slate-100 hover:text-green-400 transition-colors text-lg font-bold">Professional Certificate of Competency in Advanced TCP/IP-based Industrial Networking</a>
+                            <span class="text-green-400 text-lg italic whitespace-nowrap sm:ml-4">Expected Feb 2025</span>
+                        </div>
+                        <span class="text-slate-400 italic">Engineering Institute of Technology (EIT)</span>
+                    </div>
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start mb-1">
+                            <a href="https://www.udacity.com/certificate/e/dc585bc8-c7c9-11eb-90a5-2701b3a11ae8" target="_blank" class="text-slate-100 hover:text-green-400 transition-colors text-lg font-bold">Intro to Self-Driving Cars Nanodegree Program</a>
+                             <span class="text-green-400 text-lg italic whitespace-nowrap sm:ml-4">June 2021</span>
+                        </div>
+                         <span class="text-slate-400 italic">Udacity</span>
+                    </div>
+                 </div>
+
+                <h3 class="text-xl text-slate-200 mt-10 mb-4 font-bold border-b border-slate-800 pb-2">> PUBLICATIONS</h3>
+                <ul class="content-list text-slate-300 text-lg space-y-4">
+                    <li>
+                        Aydin, M. et al. Novel Soft Haptic Biofeedback—Pilot Study on Postural Balance and Proprioception. <span class="italic">Sensors</span> 2022, 22, 3779.
+                        <br><a href="https://doi.org/10.3390/s22103779" class="text-green-link text-base" target="_blank">[doi.org/10.3390/s22103779]</a>
                     </li>
-                    <li class="flex items-center">
-                        <span data-lucide="linkedin" class="w-4 h-4 mr-2 text-green-500"></span>
-                        <span>LinkedIn (<a href="https://www.linkedin.com/in/mert-aydin-395480168" class="text-green-link" target="_blank">Mert Aydın</a>)</span>
+                    <li>
+                        M. Aydin et al. Variable Stiffness Improves Safety and Performance in Soft Robotics. <span class="italic">arXiv Pre‑print</span> 2302.02534, Feb 2023.
+                        <br><a href="https://arxiv.org/abs/2302.02534" class="text-green-link text-base" target="_blank">[arxiv.org/abs/2302.02534]</a>
+                    </li>
+                    <li>
+                         Beldek, C. et al. Sensing‑based Robustness Challenges in Agricultural Robotic Harvesting. <span class="italic">arXiv Pre‑print</span> 2502.12403, Feb 2025.
+                        <br><a href="https://arxiv.org/abs/2502.12403" class="text-green-link text-base" target="_blank">[arxiv.org/abs/2502.12403]</a>
                     </li>
                 </ul>
             </section>
@@ -247,9 +205,17 @@
         </main>
 
         <!-- Footer -->
-        <footer class="text-center mt-12 py-6 border-t border-slate-800">
-            <p class="text-sm text-slate-500">
-                // © <span id="current-year"></span> Mert Aydin
+        <footer class="text-center mt-20 py-6 border-t border-slate-800 text-slate-500 flex flex-col items-center gap-4">
+             <div class="flex gap-6">
+                <a href="https://www.linkedin.com/in/mert-aydin-395480168" target="_blank" class="hover:text-green-500 transition-colors flex items-center gap-2">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn
+                </a>
+                <a href="mailto:mrtndy@outlook.com" class="hover:text-green-500 transition-colors flex items-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i> Email
+                </a>
+            </div>
+            <p class="text-sm">
+                // © <span id="current-year"></span> Mert Aydin_
             </p>
         </footer>
 
@@ -258,12 +224,10 @@
     <!-- JavaScript for Page Navigation -->
     <script>
         function handleNavigation() {
-            // Get all page sections
             const sections = document.querySelectorAll('.page-section');
-            // Get all nav links
             const navLinks = document.querySelectorAll('.nav-link');
-            // Get the hash from the URL, or default to '#about'
-            const hash = window.location.hash || '#about';
+            // Default to #experience instead of #about
+            const hash = window.location.hash || '#experience';
             
             let pageFound = false;
             let activeHash = hash;
@@ -272,18 +236,18 @@
                 if ('#' + section.id === hash) {
                     section.style.display = 'block';
                     pageFound = true;
+                    window.scrollTo(0, 0); // Scroll to top on section change
                 } else {
                     section.style.display = 'none';
                 }
             });
 
-            // Fallback to 'about' page if hash is invalid
+            // Fallback to #experience if the hash is invalid
             if (!pageFound && sections.length > 0) {
-                document.getElementById('about').style.display = 'block';
-                activeHash = '#about'; // Set activeHash to fallback
+                document.getElementById('experience').style.display = 'block';
+                activeHash = '#experience';
             }
 
-            // Update active link
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === activeHash) {
                     link.classList.add('text-green-500');
@@ -295,24 +259,16 @@
             });
         }
 
-        // Run navigation logic on initial page load
         window.addEventListener('DOMContentLoaded', () => {
             handleNavigation();
             lucide.createIcons();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
         
-        // Run navigation logic whenever the hash changes
         window.addEventListener('hashchange', () => {
             handleNavigation();
             lucide.createIcons();
         });
     </script>
-
-    <!-- Lucide Icons & Footer Year -->
-    <script>
-        lucide.createIcons();
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
-
