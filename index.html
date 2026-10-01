@@ -4,14 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mert Aydin - Control & Automation Engineer</title>
+    <meta name="description" content="Integration testing and commissioning of machine control systems on real hardware, with a background in robotics research (three publications) and ongoing side projects in motor control." />
+    <meta property="og:title" content="Mert Aydin - Control &amp; Automation Engineer" />
+    <meta property="og:description" content="Integration testing and commissioning of machine control systems on real hardware, with a background in robotics research (three publications) and ongoing side projects in motor control." />
+    <meta property="og:url" content="https://mrtndy.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mrtndy.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- VT323 font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@1.49.0/dist/umd/lucide.min.js"></script>
 
     <style>
         body {
@@ -23,7 +32,10 @@
         .text-green-link { color: #34d399; }
         .text-green-link:hover { color: #a7f3d0; }
 
-        .page-section { display: none; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
 
         .content-list { list-style-type: none; padding-left: 0; }
         .content-list li { position: relative; padding-left: 1.5em; margin-bottom: 0.5em; }
@@ -55,7 +67,7 @@
         <header class="mb-10">
             <h1 class="text-4xl sm:text-5xl font-bold text-slate-100 tracking-wider">Mert Aydin</h1>
             <p class="text-xl sm:text-2xl text-green-500 mt-2">> Control & Automation Engineer<span class="blinking-cursor">_</span></p>
-            <p class="text-slate-400 text-lg mt-3">Integration testing and commissioning of machine control systems on real hardware, CAN bus motor tooling, and robotics research with three publications.</p>
+            <p class="text-slate-400 text-lg mt-3">Integration testing and commissioning of machine control systems on real hardware, with a background in robotics research (three publications) and ongoing side projects in motor control.</p>
             <div class="text-slate-400 text-lg mt-4 flex flex-wrap gap-4 items-center">
                 <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i> Bowral, NSW, Australia</span>
                 <span class="hidden sm:inline">|</span>
@@ -64,16 +76,16 @@
 
             <!-- Navigation -->
             <nav class="flex flex-wrap gap-4 sm:gap-6 mt-8 border-b border-slate-800 pb-4">
-                <a href="#experience" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EXPERIENCE ]</a>
-                <a href="#projects" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ PROJECTS ]</a>
-                <a href="#skills" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ SKILLS ]</a>
-                <a href="#education" class="nav-link text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EDUCATION ]</a>
+                <a href="#experience" class="text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EXPERIENCE ]</a>
+                <a href="#projects" class="text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ PROJECTS ]</a>
+                <a href="#skills" class="text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ SKILLS ]</a>
+                <a href="#education" class="text-slate-300 hover:text-green-500 font-medium text-xl transition-colors">[ EDUCATION ]</a>
             </nav>
         </header>
 
         <main>
             <!-- Experience -->
-            <section id="experience" class="page-section mb-16 animate-fade-in">
+            <section id="experience" class="mb-16">
                 <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
                     <i data-lucide="briefcase" class="w-6 h-6 mr-3"></i>EXPERIENCE
                 </h2>
@@ -93,8 +105,8 @@
                             <li>Test, commission, and troubleshoot control systems on underground mining machinery, diagnosing faults across electrical, software, and network interfaces.</li>
                             <li>Build test tooling and validation workflows in C, C++, and Python for machinery control systems.</li>
                             <li>Integrate industrial communication networks (EtherNet/IP, TCP/IP, CAN bus) into control and test infrastructure.</li>
-                            <li>Work on embedded PLC-based platforms, distributed I/O, and safety-related control functions.</li>
-                            <li>Provide engineering support for field technical queries from service teams across Australia.</li>
+                            <li>Test and troubleshoot embedded PLC-based platforms, distributed I/O, and safety-related control functions.</li>
+                            <li>Answer technical queries from field service teams across Australia.</li>
                             <li>Write engineering documentation including functional specifications, control narratives, and validation plans.</li>
                         </ul>
                     </div>
@@ -121,7 +133,7 @@
             </section>
 
             <!-- Projects -->
-            <section id="projects" class="page-section mb-16 animate-fade-in">
+            <section id="projects" class="mb-16">
                 <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
                     <i data-lucide="folder-git-2" class="w-6 h-6 mr-3"></i>PROJECTS
                 </h2>
@@ -144,10 +156,30 @@
                     </div>
 
                 </div>
+
+                <h3 class="text-xl text-slate-200 mt-12 mb-4 font-bold border-b border-slate-800 pb-2">> IN PROGRESS</h3>
+                <div class="space-y-10">
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
+                            <h3 class="text-2xl text-slate-100 font-bold">Wheel-Legged Robot Testbed</h3>
+                            <span class="text-green-400 text-lg whitespace-nowrap sm:ml-4">in design</span>
+                        </div>
+                        <p class="text-slate-400 text-lg italic mb-2">Autodesk Fusion</p>
+                        <p class="text-slate-300 text-lg">Full mechanical assembly designed in Autodesk Fusion around the joint motors characterised above; build and bench testing next.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
+                            <h3 class="text-2xl text-slate-100 font-bold">Teensy 4.1 Controller Platform</h3>
+                            <span class="text-green-400 text-lg whitespace-nowrap sm:ml-4">in progress</span>
+                        </div>
+                        <p class="text-slate-400 text-lg italic mb-2">C++, PlatformIO, Teensy 4.1</p>
+                        <p class="text-slate-300 text-lg">Configurable controller base on the Teensy 4.1. Firmware base built and running; Ethernet, CAN, CAN FD and USB interfaces in design.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Skills -->
-            <section id="skills" class="page-section mb-16 animate-fade-in">
+            <section id="skills" class="mb-16">
                 <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
                     <i data-lucide="cpu" class="w-6 h-6 mr-3"></i>TECHNICAL_SKILLS
                 </h2>
@@ -175,7 +207,7 @@
                     </div>
                      <div class="bg-slate-900/50 p-4 border border-slate-800 rounded-sm md:col-span-2">
                         <h3 class="text-green-400 mb-2 uppercase font-bold flex items-center"><i data-lucide="bot" class="w-4 h-4 mr-2"></i> Robotics</h3>
-                        <p class="text-slate-300">Soft robotics design, motor control systems, pneumatic control systems, sensor integration</p>
+                        <p class="text-slate-300">State estimation (Kalman and particle filters), soft robotics design, motor control systems, pneumatic control systems, sensor integration</p>
                     </div>
                 </div>
                  <div class="mt-6">
@@ -185,7 +217,7 @@
             </section>
 
              <!-- Education & Certs -->
-            <section id="education" class="page-section mb-16 animate-fade-in">
+            <section id="education" class="mb-16">
                 <h2 class="text-3xl font-semibold text-green-500 mb-8 flex items-center">
                     <i data-lucide="graduation-cap" class="w-6 h-6 mr-3"></i>EDUCATION_&_CERTS
                 </h2>
@@ -273,53 +305,10 @@
 
     </div>
 
-    <!-- JavaScript for Page Navigation -->
     <script>
-        function handleNavigation() {
-            const sections = document.querySelectorAll('.page-section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            // Default to #experience instead of #about
-            const hash = window.location.hash || '#experience';
-            
-            let pageFound = false;
-            let activeHash = hash;
-
-            sections.forEach(section => {
-                if ('#' + section.id === hash) {
-                    section.style.display = 'block';
-                    pageFound = true;
-                    window.scrollTo(0, 0); // Scroll to top on section change
-                } else {
-                    section.style.display = 'none';
-                }
-            });
-
-            // Fallback to #experience if the hash is invalid
-            if (!pageFound && sections.length > 0) {
-                document.getElementById('experience').style.display = 'block';
-                activeHash = '#experience';
-            }
-
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === activeHash) {
-                    link.classList.add('text-green-500');
-                    link.classList.remove('text-slate-300');
-                } else {
-                    link.classList.remove('text-green-500');
-                    link.classList.add('text-slate-300');
-                }
-            });
-        }
-
         window.addEventListener('DOMContentLoaded', () => {
-            handleNavigation();
             lucide.createIcons();
             document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
-        
-        window.addEventListener('hashchange', () => {
-            handleNavigation();
-            lucide.createIcons();
         });
     </script>
 </body>
