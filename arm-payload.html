@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7-Axis Robot Arm: payload map - Mert Aydin</title>
+    <meta name="description" content="Interactive 3D map of the calculated payload of a seven-axis robot arm across its reach, at rated and at peak motor torque." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <style>
+        :root { --green: #34d399; --ink: #e5e7eb; --dim: #94a3b8; --line: #1e293b; }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-family: 'VT323', monospace; overflow: hidden; }
+        #stage { position: fixed; inset: 0; }
+        canvas { display: block; }
+        .panel { position: fixed; z-index: 2; text-shadow: 0 0 3px rgba(52, 211, 153, 0.4); }
+        #head { top: 16px; left: 20px; right: 20px; pointer-events: none; }
+        #head a { pointer-events: auto; color: var(--green); text-decoration: none; font-size: 20px; }
+        #head a:hover { color: #a7f3d0; }
+        h1 { margin: 6px 0 0; font-size: 34px; font-weight: 400; letter-spacing: 1px; color: #f1f5f9; }
+        #sub { font-size: 20px; color: var(--dim); margin-top: 2px; }
+        #stat { top: 132px; left: 20px; pointer-events: none; }
+        #big { font-size: 92px; line-height: 0.9; color: var(--green); }
+        #bigwhat { font-size: 24px; color: #f1f5f9; margin-top: 6px; }
+        #bigwhy { font-size: 20px; color: var(--dim); }
+        #modes { margin-top: 14px; display: flex; gap: 10px; pointer-events: auto; flex-wrap: wrap; }
+        button { font: inherit; font-size: 22px; padding: 2px 12px; color: var(--dim); background: #000; border: 1px solid #334155; cursor: pointer; text-shadow: inherit; }
+        button:hover { color: #a7f3d0; border-color: var(--green); }
+        button[aria-pressed="true"] { color: #000; background: var(--green); border-color: var(--green); text-shadow: none; }
+        button:focus-visible { outline: 2px solid #a7f3d0; outline-offset: 2px; }
+        #hand { margin-top: 16px; font-size: 22px; color: var(--dim); }
+        #hand b, #sag b { color: #f1f5f9; font-weight: 400; }
+        #sag { font-size: 22px; color: var(--dim); }
+        #why { margin-top: 6px; max-width: 470px; pointer-events: auto; font-size: 19px; line-height: 1.05; }
+        #whyline { margin-top: 10px; max-width: 330px; font-size: 19px; line-height: 1.05; color: var(--dim); }
+        #why summary { cursor: pointer; color: var(--green); list-style: none; width: fit-content; }
+        #why summary::-webkit-details-marker { display: none; }
+        #why summary:hover { color: #a7f3d0; }
+        #why summary:focus-visible { outline: 2px solid #a7f3d0; outline-offset: 2px; }
+        #why p { margin: 8px 0 0; padding: 8px 10px; color: #cbd5e1; background: rgba(0, 0, 0, 0.82); border-left: 2px solid var(--green); }
+        #why p.small { color: var(--dim); font-size: 18px; border-left-color: #334155; }
+        #why .k { color: var(--green); }
+        #legend { right: 20px; bottom: 74px; font-size: 19px; color: var(--dim); pointer-events: none; }
+        #legend .t { color: #f1f5f9; margin-bottom: 4px; font-size: 21px; }
+        #legend .row { display: flex; align-items: center; gap: 8px; line-height: 1.05; }
+        #legend .sw { width: 26px; height: 15px; border: 1px solid #0f172a; }
+        #foot { left: 20px; right: 20px; bottom: 12px; font-size: 18px; color: #64748b; pointer-events: none; }
+        #tip { position: fixed; z-index: 3; display: none; pointer-events: none; padding: 2px 10px; font-size: 21px; color: #f1f5f9; background: rgba(0, 0, 0, 0.88); border: 1px solid var(--green); white-space: nowrap; }
+        #fail { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; text-align: center; padding: 30px; font-size: 24px; color: var(--dim); z-index: 4; }
+        @media (max-width: 760px) {
+            h1 { font-size: 26px; } #sub { font-size: 17px; } #stat { top: 118px; }
+            #big { font-size: 64px; } #bigwhat { font-size: 20px; } #bigwhy { font-size: 17px; }
+            button { font-size: 19px; } #hand, #sag { font-size: 19px; } #why { font-size: 17px; max-width: 300px; } #whyline { font-size: 16px; max-width: 250px; } #why p.small { font-size: 15px; }
+            #legend { font-size: 16px; bottom: 150px; right: 10px; } #legend .t { font-size: 17px; } #legend .sw { width: 18px; height: 12px; }
+            #foot { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="stage" role="img" aria-label="Three-dimensional view of a robot arm on a bench inside its reach, cut open to show how much payload it can hold at each place."></div>
+
+    <div class="panel" id="head">
+        <a href="index.html#projects">&lt; back to projects</a>
+        <h1>&gt; 7-AXIS ARM: PAYLOAD MAP_</h1>
+        <div id="sub">Calculated from the CAD model. Not measured on a bench yet.</div>
+    </div>
+
+    <div class="panel" id="stat">
+        <div id="big">-</div>
+        <div id="bigwhat"></div>
+        <div id="bigwhy"></div>
+        <div id="modes" role="group" aria-label="Motor torque used">
+            <button id="b-rated" aria-pressed="true">[ CONTINUOUS ]</button>
+            <button id="b-peak" aria-pressed="false">[ SHORT LIFT ]</button>
+        </div>
+        <div id="hand">at the hand now: <b id="handkg">-</b></div>
+        <div id="sag">sag at the hand: <b id="sagmm">-</b></div>
+        <div id="whyline">Printed links bend under load, so sag is calculated. Planned: cancel it in the controller.</div>
+        <details id="why">
+            <summary>[ why sag? read more ]</summary>
+            <p>The links are 3D printed and the joint parts are CNC machined, driven by planetary-geared BLDC motors. Printed links bend under load, so the hand sits lower than the joint angles alone say. Sag has to be considered when the arm is actuated, so it is calculated here next to the payload.</p>
+            <p><span class="k">Plan:</span> remove it with control algorithms. The controller predicts the sag for each posture and payload and shifts the joint targets to cancel it. The prediction starts from this stiffness model. A bench test with known weights then gives one measured stiffness per joint, which also takes in the gearboxes and bearings. Not built yet.</p>
+        </details>
+    </div>
+
+    <div class="panel" id="legend"></div>
+    <div class="panel" id="foot"></div>
+    <div id="tip"></div>
+    <div id="fail">This view needs WebGL, which this browser did not provide.<br>The numbers: 1.5 kg held continuously and 5.8 kg lifted for a few seconds, in any posture (calculated).</div>
+
+    <script src="arm-payload-data.js"></script>
+    <script src="arm-mesh.js"></script>
+    <script src="arm-sag.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                       "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const D = window.ARM_PAYLOAD;
+        const GREEN = 0x34d399;
+        const SLICE_X = -60;                         // the map stands this far BEHIND the arm's own plane, so it never covers the arm
+        const stillOnly = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const stage = document.getElementById('stage');
+        let mode = 'rated';
+
+        // ---------- words ----------
+        const WORDS = {
+            rated: { what: 'held continuously, in any posture', why: 'motors at rated torque' },
+            peak:  { what: 'lifted for a few seconds, in any posture', why: 'motors at peak torque' },
+        };
+        document.getElementById('foot').textContent =
+            'Colour: what the arm can hold at that place with its best posture for it. The dome is the arm\'s reach; the map is one slice through it. ' +
+            'Static hold against gravity, payload counted 1.5 times. Heat, gear backlash and bearing tilt are not in the model. ' +
+            'Dashed line: how the arm would hang under that payload (bending of the printed parts, payload alone), drawn 20 times larger than life. ' +
+            (D.poses / 1e6).toFixed(0) + ' million sampled postures, ' + D.date + '. Drag to turn, scroll to zoom.';
+        const legend = document.getElementById('legend');
+        const bandNames = ['under ' + D.edges[0]].concat(D.edges.slice(0, -1).map((e, i) => e + ' to ' + D.edges[i + 1]), ['over ' + D.edges[D.edges.length - 1]]);
+        legend.innerHTML = '<div class="t">can hold (kg)</div>' + bandNames.map((n, i) => ({ n, c: D.colors[i] })).reverse()
+            .map(b => '<div class="row"><span class="sw" style="background:' + b.c + '"></span>' + b.n + '</div>').join('');
+
+        function valueAt(r, h) {                       // payload at a place, from the exported grid ; null outside the reach
+            const g = D.grids[mode];
+            const i = Math.round((h - D.h0) / D.cell), j = Math.round((r - D.r0) / D.cell);
+            if (i < 0 || i >= g.length || j < 0 || j >= g[0].length) return null;
+            return g[i][j];
+        }
+        const kgText = v => v === null ? 'outside the map' : 'up to ' + (v >= 10 ? Math.floor(v) : (Math.floor(v * 10) / 10).toFixed(1)) + ' kg';
+
+        // ---------- scene ----------
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        } catch (e) {
+            document.getElementById('fail').style.display = 'flex';
+            throw e;
+        }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000);
+        stage.appendChild(renderer.domElement);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(32, 1, 10, 20000);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.enablePan = false;
+        controls.minDistance = 900;
+        controls.maxDistance = 4200;
+        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.minAzimuthAngle = 12 * Math.PI / 180;    // the camera stays on the arm's side of the map
+        controls.maxAzimuthAngle = 168 * Math.PI / 180;
+        scene.add(new THREE.AmbientLight(0xffffff, 1.25));
+        const fill = new THREE.DirectionalLight(0xffffff, 1.3);
+        fill.position.set(1500, 500, 300);
+        scene.add(fill);
+        const sun = new THREE.DirectionalLight(0xffffff, 1.7);
+        sun.position.set(900, 1400, 700);
+        scene.add(sun);
+        const rim = new THREE.DirectionalLight(0x34d399, 0.8);
+        rim.position.set(300, 500, -900);
+        scene.add(rim);
+
+        function textSprite(text, px, colour, size = 0.9) {
+            const c = document.createElement('canvas'), k = c.getContext('2d');
+            const font = 'bold ' + px + 'px ui-monospace, Menlo, Consolas, monospace';
+            k.font = font;
+            c.width = Math.ceil(k.measureText(text).width) + 24;
+            c.height = px + 20;
+            k.font = font;
+            k.fillStyle = 'rgba(0,0,0,0.78)';
+            k.fillRect(0, 0, c.width, c.height);
+            k.fillStyle = colour;
+            k.textBaseline = 'middle';
+            k.fillText(text, 12, c.height / 2 + 1);
+            const tex = new THREE.CanvasTexture(c);
+            tex.colorSpace = THREE.SRGBColorSpace;
+            const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false, transparent: true }));
+            s.scale.set(c.width * size, c.height * size, 1);
+            s.renderOrder = 10;
+            return s;
+        }
+
+        // ---------- the bench ----------
+        const bench = new THREE.Mesh(new THREE.CylinderGeometry(820, 820, 24, 96), new THREE.MeshStandardMaterial({ color: 0x0b1210, roughness: 0.9 }));
+        bench.position.y = -12;
+        scene.add(bench);
+        for (const rr of [200, 400, 600]) {
+            const pts = [];
+            for (let a = 0; a <= 128; a++) pts.push(new THREE.Vector3(rr * Math.sin(a / 128 * 2 * Math.PI), 0.6, rr * Math.cos(a / 128 * 2 * Math.PI)));
+            scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.28 })));
+            const s = textSprite(rr + ' mm', 30, '#94a3b8', 0.8);
+            s.position.set(rr * 0.94, 16, -rr * 0.34);
+            scene.add(s);
+        }
+
+        // ---------- the arm's reach: a dome. The half behind the map is tinted, the half in front is wire only ----------
+        const outline = D.outline.map(p => new THREE.Vector2(p[0], p[1]));
+        scene.add(new THREE.Mesh(new THREE.LatheGeometry(outline, 64, Math.PI, Math.PI),
+            new THREE.MeshBasicMaterial({ color: GREEN, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false })));
+        const wireBack = new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.22 });
+        const wireFront = new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.09 });
+        for (let m = 0; m < 16; m++) {                // meridians
+            const phi = m / 16 * 2 * Math.PI;
+            scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(outline.map(p => new THREE.Vector3(p.x * Math.sin(phi), p.y, p.x * Math.cos(phi)))),
+                Math.sin(phi) < -0.01 ? wireBack : wireFront));
+        }
+        for (let k = 0; k < outline.length - 1; k += 5) {   // rings, each in a back half and a front half
+            const p = outline[k];
+            for (const [from, mat] of [[Math.PI, wireBack], [0, wireFront]]) {
+                const pts = [];
+                for (let a = 0; a <= 48; a++) { const phi = from + a / 48 * Math.PI; pts.push(new THREE.Vector3(p.x * Math.sin(phi), p.y, p.x * Math.cos(phi))); }
+                scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat));
+            }
+        }
+
+        // ---------- the map: one upright slice through the base axis, both ways from it ----------
+        const loader = new THREE.TextureLoader();
+        const maps = {};
+        for (const t of ['rated', 'peak']) {
+            maps[t] = loader.load('arm-payload-' + t + '.png');
+            maps[t].colorSpace = THREE.SRGBColorSpace;
+            maps[t].anisotropy = 8;
+        }
+        const faceMat = new THREE.MeshBasicMaterial({ map: maps.rated, transparent: true, side: THREE.DoubleSide, alphaTest: 0.02 });
+        const faces = [], labelGroup = new THREE.Group();
+        scene.add(labelGroup);
+        for (const dir of [1, -1]) {                   // +1: the side the arm works on ; -1: the same map mirrored, left clear for the numbers
+            const g = new THREE.BufferGeometry();
+            g.setAttribute('position', new THREE.Float32BufferAttribute([SLICE_X, 0, 0, SLICE_X, 0, dir * D.rMax, SLICE_X, D.hTop, dir * D.rMax, SLICE_X, D.hTop, 0], 3));
+            g.setAttribute('uv', new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, 1, 0, 1], 2));
+            g.setIndex([0, 1, 2, 0, 2, 3]);
+            const f = new THREE.Mesh(g, faceMat);
+            scene.add(f);
+            faces.push(f);
+            scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(outline.map(p => new THREE.Vector3(SLICE_X, p.y, dir * p.x))),
+                new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.9 })));
+        }
+        scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(SLICE_X, 0, 0), new THREE.Vector3(SLICE_X, D.hTop - 30, 0)]),
+            new THREE.LineDashedMaterial({ color: GREEN, transparent: true, opacity: 0.5, dashSize: 14, gapSize: 10 })).computeLineDistances());
+        function drawLabels() {                        // the band numbers sit on the mirrored side, where the arm never covers them
+            labelGroup.clear();
+            for (const m of D.labels[mode]) {
+                const s = textSprite(m.kg + ' kg', 34, '#f1f5f9', 0.95);
+                s.position.set(SLICE_X + 2, m.h, -m.r);
+                labelGroup.add(s);
+            }
+        }
+
+        // ---------- the arm ----------
+        // Joint frames from the model's joint table. The parts are the arm's real solids (arm-mesh.js): the printed bones,
+        // the motor shells and the base parts, each in its own link frame. Motors and rings are the plain cylinders the
+        // clearance checks use ; the shells cover most of them.
+        const J = D.joints, frame = [];
+        const base = new THREE.Group();
+        scene.add(base);
+        let parent = base;
+        for (const j of J) {
+            const g = new THREE.Group();
+            g.position.set(...j.origin);
+            parent.add(g);
+            frame.push(g);
+            parent = g;
+        }
+        const linkGroup = name => name === 'L0' ? base : frame[Number(name.slice(1)) - 1];
+        const look = (colour, rough, metal) => new THREE.MeshStandardMaterial({ color: colour, roughness: rough, metalness: metal, flatShading: true, side: THREE.DoubleSide });
+        const LOOK = { bone: look(0x4b515c, 0.6, 0.05), body: look(0x3d424b, 0.7, 0.05), shell: look(0x9a8c79, 0.85, 0.0),
+                       metal: look(0xb9bdc3, 0.35, 0.7), motor: look(0x191b20, 0.5, 0.4) };
+        const bytes = s => Uint8Array.from(atob(s), ch => ch.charCodeAt(0)).buffer;
+        const MESH = window.ARM_MESH;
+        let triangles = 0;
+        for (const p of MESH.parts) {
+            const raw = new Int16Array(bytes(p.pos)), pos = new Float32Array(raw.length);
+            for (let i = 0; i < raw.length; i++) pos[i] = raw[i] * MESH.unit;
+            const g = new THREE.BufferGeometry();
+            g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            g.setIndex(new THREE.BufferAttribute(p.wide ? new Uint32Array(bytes(p.idx)) : new Uint16Array(bytes(p.idx)), 1));
+            linkGroup(p.link).add(new THREE.Mesh(g, LOOK[p.kind]));
+            triangles += p.tris;
+        }
+        for (const cy of MESH.cylinders) {
+            const r = cy.kind === 'motor' ? cy.r - 3 : cy.r;          // the motor cans are drawn 3 mm slimmer so the shells that cover them show
+            const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, cy.L, 40), LOOK[cy.kind]);
+            const ax = new THREE.Vector3(...cy.ax).normalize();
+            m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), ax);
+            m.position.set(...cy.p0).addScaledVector(ax, cy.L / 2);
+            linkGroup(cy.link).add(m);
+        }
+        const payload = new THREE.Group();
+        payload.position.y = D.flangeFace + D.payloadCentre;
+        const box = new THREE.BoxGeometry(64, 64, 64);
+        payload.add(new THREE.Mesh(box, new THREE.MeshStandardMaterial({ color: 0x0b1210, emissive: 0x0b3a2b, roughness: 0.5 })));
+        payload.add(new THREE.LineSegments(new THREE.EdgesGeometry(box), new THREE.LineBasicMaterial({ color: 0xa7f3d0 })));
+        frame[6].add(payload);
+
+        // where the payload is on the map: a ring on the slice, a line to the payload, and the figure beside it
+        const spot = new THREE.Mesh(new THREE.RingGeometry(20, 27, 40), new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide }));
+        spot.rotation.y = Math.PI / 2;
+        scene.add(spot);
+        const tie = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 }));
+        scene.add(tie);
+        let tagText = '', tag = null, sagText = '', sagTag = null;
+
+        // anticipated sag: the arm's centre line as it would hang under the payload, drawn SAG_DRAWN times larger than life
+        const SAG = window.ARM_SAG, SAG_DRAWN = 20;
+        const ghostMat = new THREE.LineDashedMaterial({ color: 0xffffff, dashSize: 16, gapSize: 10, transparent: true, opacity: 0.95, depthTest: false });
+        const ghost = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), ghostMat);
+        ghost.renderOrder = 8;
+        scene.add(ghost);
+        const ghostBox = new THREE.LineSegments(new THREE.EdgesGeometry(box), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, depthTest: false }));
+        ghostBox.renderOrder = 8;
+        scene.add(ghostBox);
+
+        // The arm moves through four postures and back, only by its shoulder, elbow and wrist hinges, so the payload
+        // stays in the plane of the map and inside the arm's reach the whole way (checked by pathCheck).
+        const KEYS = SAG.keys, LEG = SAG.leg;
+        const handKg = document.getElementById('handkg'), sagMm = document.getElementById('sagmm');
+        const world = new THREE.Vector3(), pShoulder = new THREE.Vector3(), pElbow = new THREE.Vector3(), pWrist = new THREE.Vector3();
+        function setAngles(t) {
+            const n = KEYS.length, x = ((t / LEG) % n + n) % n, k = Math.floor(x), f = x - k;
+            const e = 0.5 - 0.5 * Math.cos(Math.PI * f), a = KEYS[k], b = KEYS[(k + 1) % n], d = Math.PI / 180;
+            frame[1].rotation.x = (a[0] + (b[0] - a[0]) * e) * d;
+            frame[3].rotation.x = (a[1] + (b[1] - a[1]) * e) * d;
+            frame[5].rotation.x = (a[2] + (b[2] - a[2]) * e) * d;
+            scene.updateMatrixWorld();
+            payload.getWorldPosition(world);
+            return valueAt(Math.hypot(world.x, world.z), world.y);
+        }
+        function sagPerKg(t) {                         // movement of elbow, wrist and payload per kilogram, between the stored steps
+            const n = SAG.steps, x = (((t / (KEYS.length * LEG)) % 1) + 1) % 1 * n, i = Math.floor(x) % n, f = x - Math.floor(x);
+            const a = SAG.perKg[i], b = SAG.perKg[(i + 1) % n];
+            return a.map((v, k) => new THREE.Vector3(v[0] + (b[k][0] - v[0]) * f, v[1] + (b[k][1] - v[1]) * f, v[2] + (b[k][2] - v[2]) * f));
+        }
+        function sprite(old, text, colour) {
+            if (old) { scene.remove(old); old.material.map.dispose(); old.material.dispose(); }
+            const s = textSprite(text, 34, colour, 0.9);
+            scene.add(s);
+            return s;
+        }
+        function pose(t) {
+            const v = setAngles(t), text = kgText(v), kg = D.ratings[mode], move = sagPerKg(t);
+            handKg.textContent = text;
+            spot.position.set(SLICE_X + 3, world.y, world.z);
+            tie.geometry.setFromPoints([world.clone(), spot.position.clone()]);
+            if (text !== tagText) { tag = sprite(tag, text, '#a7f3d0'); tagText = text; }
+            tag.position.set(world.x + 30, world.y + 84, world.z);
+            // the sag
+            const drop = -move[2].y * kg, words = drop.toFixed(1) + ' mm with ' + kg.toFixed(1) + ' kg';
+            sagMm.textContent = words;
+            frame[1].getWorldPosition(pShoulder);
+            frame[3].getWorldPosition(pElbow);
+            frame[5].getWorldPosition(pWrist);
+            const hung = [pShoulder.clone(), pElbow.clone().addScaledVector(move[0], kg * SAG_DRAWN), pWrist.clone().addScaledVector(move[1], kg * SAG_DRAWN),
+                          world.clone().addScaledVector(move[2], kg * SAG_DRAWN)];
+            ghost.geometry.setFromPoints(hung);
+            ghost.computeLineDistances();
+            ghostBox.position.copy(hung[3]);
+            payload.getWorldQuaternion(ghostBox.quaternion);
+            const label = 'sag ' + drop.toFixed(1) + ' mm (drawn x' + SAG_DRAWN + ')';
+            if (label !== sagText) { sagTag = sprite(sagTag, label, '#ffffff'); sagText = label; }
+            sagTag.position.set(hung[3].x + 30, hung[3].y - 78, hung[3].z);
+        }
+        function pathCheck() {                         // how often the moving payload is off the map, how low it gets, and the sag range
+            let off = 0, n = 0, low = 1e9, sagLo = 1e9, sagHi = 0, worstKey = 0;
+            for (let t = 0; t < KEYS.length * LEG; t += 0.02) {
+                if (setAngles(t) === null) off++;
+                low = Math.min(low, world.y);
+                const s = -sagPerKg(t)[2].y;
+                sagLo = Math.min(sagLo, s); sagHi = Math.max(sagHi, s);
+                n++;
+            }
+            KEYS.forEach((k, i) => {                    // the page's own joint chain against the model's, at the four postures
+                setAngles(i * LEG);
+                const want = SAG.keyPayloadPlace[i];
+                worstKey = Math.max(worstKey, Math.hypot(world.x - want[0], world.y - want[1], world.z - want[2]));
+            });
+            return { samples: n, offTheMap: off, lowestPayloadCentre: Math.round(low), sagPerKgLeast: +sagLo.toFixed(3), sagPerKgMost: +sagHi.toFixed(3),
+                     payloadPlaceAgainstModelMm: +worstKey.toFixed(3), triangles };
+        }
+
+        // ---------- the switch between rated and peak ----------
+        function setMode(m) {
+            mode = m;
+            faceMat.map = maps[m];
+            faceMat.needsUpdate = true;
+            document.getElementById('big').textContent = D.ratings[m].toFixed(1) + ' kg';
+            document.getElementById('bigwhat').textContent = WORDS[m].what;
+            document.getElementById('bigwhy').textContent = WORDS[m].why;
+            document.getElementById('b-rated').setAttribute('aria-pressed', String(m === 'rated'));
+            document.getElementById('b-peak').setAttribute('aria-pressed', String(m === 'peak'));
+            drawLabels();
+        }
+        document.getElementById('b-rated').addEventListener('click', () => setMode('rated'));
+        document.getElementById('b-peak').addEventListener('click', () => setMode('peak'));
+
+        // ---------- pointer readout on the map ----------
+        const ray = new THREE.Raycaster(), mouse = new THREE.Vector2(), tip = document.getElementById('tip');
+        renderer.domElement.addEventListener('pointermove', e => {
+            const b = renderer.domElement.getBoundingClientRect();
+            mouse.set((e.clientX - b.left) / b.width * 2 - 1, -(e.clientY - b.top) / b.height * 2 + 1);
+            ray.setFromCamera(mouse, camera);
+            const hit = ray.intersectObjects(faces)[0];
+            const v = hit ? valueAt(Math.abs(hit.point.z), hit.point.y) : null;
+            if (hit && v !== null) {
+                tip.textContent = Math.round(Math.abs(hit.point.z) / 10) * 10 + ' mm out, ' + Math.round(hit.point.y / 10) * 10 + ' mm up: ' + kgText(v);
+                tip.style.display = 'block';
+                tip.style.left = Math.min(e.clientX + 16, window.innerWidth - tip.offsetWidth - 8) + 'px';
+                tip.style.top = (e.clientY + 16) + 'px';
+            } else {
+                tip.style.display = 'none';
+            }
+        });
+        renderer.domElement.addEventListener('pointerleave', () => { tip.style.display = 'none'; });
+
+        // ---------- size, camera, loop ----------
+        function fit() {
+            const w = stage.clientWidth, h = stage.clientHeight, narrow = w < 760;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            if (!fit.done) {
+                const far = narrow ? 3900 : 2500;
+                camera.position.set(far * 0.80, far * 0.30, far * 0.52);
+                controls.target.set(0, narrow ? 560 : 400, narrow ? 0 : 170);
+                controls.update();
+                fit.done = true;
+            }
+        }
+        window.addEventListener('resize', fit);
+        fit();
+        setMode('rated');
+        window.armPayload = { setMode, valueAt, camera, controls, frame, pose, pathCheck };   // for checks from the console
+        const clock = new THREE.Clock();
+        let t = 0;
+        function loop() {
+            if (!stillOnly) t += Math.min(clock.getDelta(), 0.05);
+            pose(t);
+            controls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(loop);
+        }
+        loop();
+    </script>
+</body>
+</html>
